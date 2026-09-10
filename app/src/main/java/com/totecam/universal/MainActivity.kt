@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.Spinner
 import android.widget.TextView
@@ -117,6 +118,7 @@ class MainActivity : AppCompatActivity() {
         val view = layoutInflater.inflate(R.layout.dialog_scan, null)
         val etUser = view.findViewById<EditText>(R.id.etScanUser)
         val etPass = view.findViewById<EditText>(R.id.etScanPass)
+        val cbDefaults = view.findViewById<CheckBox>(R.id.cbTryDefaults)
         val status = view.findViewById<TextView>(R.id.scanStatus)
         val btn = view.findViewById<Button>(R.id.btnStartScan)
         val dlg = AlertDialog.Builder(this)
@@ -128,9 +130,12 @@ class MainActivity : AppCompatActivity() {
             btn.isEnabled = false
             status.text = "Starting…"
             exec.execute {
-                val found = Discovery.scan(this, etUser.text.toString(), etPass.text.toString()) { msg ->
-                    runOnUiThread { status.text = msg }
-                }
+                val found = Discovery.scan(
+                    this,
+                    etUser.text.toString(),
+                    etPass.text.toString(),
+                    cbDefaults.isChecked
+                ) { msg -> runOnUiThread { status.text = msg } }
                 runOnUiThread {
                     var added = 0
                     val existing = CameraStore.load(this)
@@ -139,7 +144,10 @@ class MainActivity : AppCompatActivity() {
                         if (!dup) { CameraStore.save(this, f); added++ }
                     }
                     refresh()
-                    status.text = "Done. $added new camera(s) added."
+                    val needLogin = found.count { it.note.contains("login") || it.note.contains("auth") }
+                    val cracked = found.count { it.username.isNotEmpty() }
+                    status.text = "Done. ${found.size} camera(s) found, $added new. " +
+                        "$cracked with working login, $needLogin still need a login."
                     btn.isEnabled = true
                     if (added > 0) toast("Found $added camera(s)")
                 }
