@@ -12,16 +12,15 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
-      - uses: actions/setup-gradle@v4
-        with:
-          gradle-version: '8.7'
       - name: Ensure Android SDK components
         run: |
           export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
           yes | sdkmanager --licenses >/dev/null 2>&1 || true
           sdkmanager "platforms;android-35" "build-tools;35.0.0" || $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "platforms;android-35" "build-tools;35.0.0"
+      - name: Generate Gradle wrapper (pin 8.7, independent of image Gradle)
+        run: gradle --no-daemon wrapper --gradle-version 8.7 --distribution-type bin
       - name: Build APK
-        run: gradle --no-daemon --stacktrace assembleDebug
+        run: ./gradlew --no-daemon --stacktrace assembleDebug
       - name: Stage artifact
         run: |
           mkdir -p out
