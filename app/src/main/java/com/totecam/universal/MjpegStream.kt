@@ -36,7 +36,7 @@ class MjpegStream(
                 conn.connect()
                 val contentType = conn.contentType ?: ""
                 var boundary = "boundary"
-                val m = Regex("boundary=([^;\s]+)").find(contentType)
+                val m = Regex("boundary=([^;\\s]+)").find(contentType)
                 if (m != null) boundary = m.groupValues[1].trim('"')
                 val boundaryBytes = ("--" + boundary).toByteArray()
                 val input = BufferedInputStream(conn.inputStream)
