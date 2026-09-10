@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:orientation="vertical" android:padding="16dp">
+
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="Login to try on found cameras (optional)" android:textStyle="bold" />
+    <EditText android:id="@+id/etScanUser" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="username" />
+    <EditText android:id="@+id/etScanPass" android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:hint="password" android:inputType="textPassword" />
+
+    <Button android:id="@+id/btnStartScan" android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="START SCAN" android:layout_marginTop="8dp" />
+
+    <ProgressBar android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal" android:layout_marginTop="8dp" />
+
+    <TextView android:id="@+id/scanStatus" android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:textSize="12sp" android:textColor="#9AA4AD" android:layout_marginTop="6dp" android:text="Idle" />
+</LinearLayout>

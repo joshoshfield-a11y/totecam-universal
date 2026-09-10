@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:background="#000000">
+
+    <LinearLayout
+        android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1"
+        android:orientation="horizontal">
+        <FrameLayout android:id="@+id/cell0" android:layout_width="0dp" android:layout_weight="1" android:layout_height="match_parent" android:background="#101418" android:layout_margin="2dp" />
+        <FrameLayout android:id="@+id/cell1" android:layout_width="0dp" android:layout_weight="1" android:layout_height="match_parent" android:background="#101418" android:layout_margin="2dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1"
+        android:orientation="horizontal">
+        <FrameLayout android:id="@+id/cell2" android:layout_width="0dp" android:layout_weight="1" android:layout_height="match_parent" android:background="#101418" android:layout_margin="2dp" />
+        <FrameLayout android:id="@+id/cell3" android:layout_width="0dp" android:layout_weight="1" android:layout_height="match_parent" android:background="#101418" android:layout_margin="2dp" />
+    </LinearLayout>
+</LinearLayout>

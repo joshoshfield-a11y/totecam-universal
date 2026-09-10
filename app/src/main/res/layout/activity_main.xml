@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:background="#101418">
+
+    <LinearLayout
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="horizontal" android:padding="8dp" android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content"
+            android:text="ToteCam" android:textSize="20sp" android:textStyle="bold" android:textColor="#FFFFFF" />
+
+        <Button android:id="@+id/btnScan" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="SCAN" />
+        <Button android:id="@+id/btnGrid" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="GRID" android:layout_marginStart="6dp" />
+        <Button android:id="@+id/btnAdd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="+" android:layout_marginStart="6dp" />
+    </LinearLayout>
+
+    <FrameLayout android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/cameraList"
+            android:layout_width="match_parent" android:layout_height="match_parent" android:padding="6dp" />
+        <TextView
+            android:id="@+id/emptyText"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_gravity="center" android:gravity="center"
+            android:textColor="#9AA4AD" android:textSize="15sp"
+            android:text="No cameras yet.\nTap + to add one manually, or SCAN\nto find cameras on your network." />
+    </FrameLayout>
+</LinearLayout>

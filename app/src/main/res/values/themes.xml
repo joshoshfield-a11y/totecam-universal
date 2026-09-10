@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.ToteCam" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">#1565C0</item>
+        <item name="colorSecondary">#26A69A</item>
+        <item name="colorSurface">#1C232B</item>
+        <item name="android:statusBarColor">#0D1117</item>
+        <item name="android:windowBackground">#101418</item>
+    </style>
+</resources>
